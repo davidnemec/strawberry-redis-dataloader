@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: "strawberry server app"
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - redis-cache
+
+  redis-cache:
+    image: redis:7.0
